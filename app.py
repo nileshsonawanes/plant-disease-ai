@@ -7,8 +7,12 @@ from dotenv import load_dotenv
 
 # ================= LOAD ENV =================
 import os
+from openai import OpenAI
+import streamlit as st
+import os
 
-api_key = os.getenv("OPENAI_API_KEY")
+# Load API key from Streamlit secrets
+api_key = st.secrets["OPENAI_API_KEY"]
 
 if not api_key:
     st.error("API key missing")
@@ -169,4 +173,5 @@ st.markdown("""
 © 2025 <b>AIR G Foundation</b> | AI for Agriculture 🌱
 </div>
 """, unsafe_allow_html=True)
+
 
