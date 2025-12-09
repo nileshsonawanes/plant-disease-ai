@@ -3,18 +3,23 @@ from PIL import Image
 import base64
 import os
 from openai import OpenAI
-from dotenv import load_dotenv
 
-# ================= LOAD ENV =================
+# ================= PAGE CONFIG =================
+st.set_page_config(
+    page_title="AIR G | Plant Disease Prediction",
+    layout="wide",
+    page_icon="🌱"
+)
 
-
-# Load API key from Streamlit secrets
+# ================= OPENAI CLIENT =================
+# Load OpenAI API key from Streamlit secrets
 api_key = st.secrets["OPENAI_API_KEY"]
 
 if not api_key:
-    st.error("API key missing")
+    st.error("API key missing. Set it in Streamlit secrets.")
     st.stop()
 
+# Initialize OpenAI client
 client = OpenAI(api_key=api_key)
 
 # ================= PAGE CONFIG =================
@@ -170,6 +175,7 @@ st.markdown("""
 © 2025 <b>AIR G Foundation</b> | AI for Agriculture 🌱
 </div>
 """, unsafe_allow_html=True)
+
 
 
 
